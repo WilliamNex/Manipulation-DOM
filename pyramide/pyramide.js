@@ -2,7 +2,7 @@
 
 function construirePyramide() {
     // Récupérer la valeur saisie par l'utilisateur
-    const nombreEtages = document.getElementById("ligne-pyramide").value;
+    let nombreEtages = document.getElementById("ligne-pyramide").value;
 
     // Vérifier si la saisie est un nombre valide
     if (isNaN(nombreEtages) || nombreEtages <= 0) {
@@ -11,16 +11,16 @@ function construirePyramide() {
     }
 
     let pyramide = "";
-    const espace = " ";
-    const etoile = "*";
+    let espace = " ".repeat(nombreEtages); // Créer une chaîne d'espaces de longueur maximale
+    let etoile = "*".repeat(2 * nombreEtages - 1); // Créer une chaîne d'étoiles de longueur maximale
 
     // Boucle pour construire chaque étage de la pyramide
     for (let i = 1; i <= nombreEtages; i++) {
         // Ajouter les espaces avant les étoiles pour centrer la pyramide
-        pyramide += espace.repeat(nombreEtages - i);
+        pyramide += espace.slice(0, nombreEtages - i);
 
         // Ajouter les étoiles pour l'étage actuel
-        pyramide += etoile.repeat(2 * i - 1);
+        pyramide += etoile.slice(0, 2 * i - 1);
 
         // Passer à la ligne suivante
         pyramide += "\n";
